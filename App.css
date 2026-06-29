@@ -1,0 +1,163 @@
+/* src/App.css */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #0f0f1a;
+  --surface:   #1a1a2e;
+  --border:    #2e2e50;
+  --accent:    #7c5cbf;
+  --accent-hi: #a07de8;
+  --text:      #e8e8f0;
+  --muted:     #8888aa;
+  --success:   #4caf88;
+  --error:     #e05c6a;
+  --radius:    14px;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.app-shell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Shared card ──────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.45);
+  text-align: center;
+}
+
+.icon {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hi));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 1.25rem;
+}
+
+h1 { font-size: 1.45rem; font-weight: 700; margin-bottom: .4rem; }
+
+.subtitle {
+  color: var(--muted);
+  font-size: .9rem;
+  line-height: 1.55;
+  margin-bottom: 1.75rem;
+}
+.subtitle span { color: var(--accent-hi); font-weight: 600; }
+
+/* ── Input field ──────────────────────────────────────────── */
+.field { width: 100%; margin-bottom: 1rem; text-align: left; }
+.field label { display: block; font-size: .8rem; color: var(--muted); margin-bottom: .4rem; }
+
+.field input {
+  width: 100%; padding: .75rem 1rem;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color .2s;
+}
+.field input:focus { border-color: var(--accent-hi); }
+
+/* ── Button ───────────────────────────────────────────────── */
+.btn {
+  width: 100%; padding: .85rem;
+  border: none; border-radius: 10px; cursor: pointer;
+  font-size: 1rem; font-weight: 600;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hi));
+  color: #fff;
+  transition: opacity .2s, transform .1s;
+}
+.btn:hover  { opacity: .88; }
+.btn:active { transform: scale(.98); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.btn-ghost {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  margin-top: .6rem;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent-hi); opacity: 1; }
+
+/* ── Status ───────────────────────────────────────────────── */
+.status {
+  margin-top: 1rem; padding: .7rem 1rem;
+  border-radius: 8px; font-size: .875rem; font-weight: 500;
+}
+.status.success { background: rgba(76,175,136,.15); color: var(--success); }
+.status.error   { background: rgba(224,92,106,.15);  color: var(--error);   }
+
+/* ── Demo badge ───────────────────────────────────────────── */
+.demo-badge {
+  display: inline-block; margin-top: 1.25rem;
+  background: rgba(124,92,191,.2);
+  border: 1px solid var(--accent);
+  border-radius: 8px; padding: .4rem .9rem;
+  font-size: .8rem; color: var(--accent-hi); letter-spacing: .04em;
+}
+.demo-badge strong { letter-spacing: .15em; }
+
+/* ── OTP boxes ────────────────────────────────────────────── */
+.otp-row {
+  display: flex;
+  gap: clamp(.35rem, 2vw, .7rem);
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.otp-box {
+  width: clamp(40px, 12vw, 54px);
+  height: clamp(50px, 14vw, 64px);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: clamp(1.3rem, 4vw, 1.7rem);
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  transition: border-color .2s, box-shadow .2s;
+}
+.otp-box:focus  { border-color: var(--accent-hi); box-shadow: 0 0 0 3px rgba(124,92,191,.25); }
+.otp-box.filled { border-color: var(--accent); }
+.otp-box.ok     { border-color: var(--success); }
+.otp-box.bad    { border-color: var(--error); }
+
+/* ── Resend ───────────────────────────────────────────────── */
+.resend { margin-top: 1.1rem; font-size: .85rem; color: var(--muted); }
+.resend button {
+  background: none; border: none; cursor: pointer;
+  color: var(--accent-hi); font-weight: 600;
+  padding: 0; font-size: inherit; text-decoration: underline;
+}
+.resend button:disabled { color: var(--muted); text-decoration: none; cursor: default; }
+
+/* ── Success screen ───────────────────────────────────────── */
+.success-icon {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, var(--success), #74dbb0);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto 1.25rem;
+}
